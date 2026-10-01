@@ -11,7 +11,7 @@ From the project root (`sneakdrop-assignment`):
 
 ```powershell
 Copy-Item .env.example .env
-docker compose -f docker.compose.yml up --build
+docker compose up --build
 ```
 
 The first start builds the backend and frontend images, creates PostgreSQL and
@@ -21,7 +21,7 @@ start after Django passes its database health check.
 PostgreSQL and Redis are intentionally internal to the Compose network, avoiding
 collisions with services already running on your machine.
 
-Use `docker compose -f docker.compose.yml down` to stop the stack. Add `-v` only
+Use `docker compose down` to stop the stack. Add `-v` only
 when you deliberately want to erase the local PostgreSQL and Redis data.
 
 ## Run Django without Docker

@@ -16,7 +16,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-
+from users.views import csrf, current_user, session_login, session_logout
+from reservation.views import buy_sneaker
+from waitlist.views import join_sneaker_waitlist
+from payment.views import complete_payment
+from inventory.views import sneaker_status
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/auth/csrf/', csrf, name='csrf'),
+    path('api/auth/login/', session_login, name='session-login'),
+    path('api/auth/me/', current_user, name='current-user'),
+    path('api/auth/logout/', session_logout, name='session-logout'),
+    path('api/reservations/buy/', buy_sneaker, name='buy-sneaker'),
+    path('api/waitlist/join/', join_sneaker_waitlist, name='join-waitlist'),
+    path("api/payments/complete/",complete_payment,name="complete-payment"),
+    path("api/inventory/", sneaker_status, name="sneaker-status"),
 ]
